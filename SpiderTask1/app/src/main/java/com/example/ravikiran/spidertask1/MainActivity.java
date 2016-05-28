@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(savedInstanceState!=null){
             number=savedInstanceState.getInt("number");
+            numberDisplay.setText(String.valueOf(number));
         }
     }
 
@@ -29,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
       numberDisplay.setText(String.valueOf(number));
     }
 
-    public void onSaveInstanceState(Bundle savedInstanceState){
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState){
         savedInstanceState.putInt("number",number);
     }
 }
