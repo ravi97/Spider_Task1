@@ -17,11 +17,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         numberDisplay=(TextView)findViewById(R.id.textView);
+
+        if(savedInstanceState!=null){
+            number=savedInstanceState.getInt("number");
+        }
     }
 
     public void increment(View view)
     {
       number++;
       numberDisplay.setText(String.valueOf(number));
+    }
+
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.putInt("number",number);
     }
 }
