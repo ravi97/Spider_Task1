@@ -1,14 +1,28 @@
 package com.example.ravikiran.spidertask1;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int number=0;
-    TextView numberDisplay;
+    private int number1 = 0;
+    private int number2 = 0;
+    TextView numberDisplay1;
+    TextView numberDisplay2;
+    Button button1;
+    Button button2;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
 
 
     @Override
@@ -16,22 +30,61 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        numberDisplay=(TextView)findViewById(R.id.textView);
+        numberDisplay1 = (TextView) findViewById(R.id.textView1);
+        numberDisplay2 = (TextView) findViewById(R.id.textView2);
 
-        if(savedInstanceState!=null){
-            number=savedInstanceState.getInt("number");
-            numberDisplay.setText(String.valueOf(number));
+        if (savedInstanceState != null) {
+            number1 = savedInstanceState.getInt("number1");
+            number2 = savedInstanceState.getInt("number2");
+            numberDisplay1.setText(String.valueOf(number1));
+            numberDisplay2.setText(String.valueOf(number2));
         }
+        longClickListener();
+
     }
 
-    public void increment(View view)
-    {
-      number++;
-      numberDisplay.setText(String.valueOf(number));
+    public void increment1(View view) {
+        number1++;
+        numberDisplay1.setText(String.valueOf(number1));
     }
+
+    public void increment2(View view) {
+        number2++;
+        numberDisplay2.setText(String.valueOf(number2));
+    }
+
+
+    public void longClickListener() {
+        button1 = (Button) findViewById(R.id.button1);
+        button2 = (Button) findViewById(R.id.button2);
+
+        button1.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View v) {
+                number2++;
+                numberDisplay2.setText(String.valueOf(number2));
+                return true;
+            }
+        });
+
+        button2.setOnLongClickListener(new View.OnLongClickListener(){
+                                           public boolean onLongClick(View v){
+                                               number1++;
+                                               numberDisplay1.setText(String.valueOf(number1));
+                                               return true;
+                                           }
+                                       }
+        );
+
+
+    }
+
+
 
     @Override
-    protected void onSaveInstanceState(Bundle savedInstanceState){
-        savedInstanceState.putInt("number",number);
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt("number1", number1);
+        savedInstanceState.putInt("number2", number2);
     }
+
+
 }
