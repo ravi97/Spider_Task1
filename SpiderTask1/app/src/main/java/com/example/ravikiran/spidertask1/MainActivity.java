@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
@@ -17,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private int number2 = 0;
     TextView numberDisplay1;
     TextView numberDisplay2;
-    Button button1;
-    Button button2;
+    ImageView button1;
+    ImageView button2;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -54,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void longClickListener() {
-        button1 = (Button) findViewById(R.id.button1);
-        button2 = (Button) findViewById(R.id.button2);
+       public void longClickListener() {
+        button1 = (ImageView) findViewById(R.id.imageView1);
+        button2 = (ImageView) findViewById(R.id.imageView2);
 
         button1.setOnLongClickListener(new View.OnLongClickListener() {
             public boolean onLongClick(View v) {
